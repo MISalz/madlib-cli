@@ -1,0 +1,6 @@
+[
+  "tests/test_madlib.py::test_merge",
+  "tests/test_madlib.py::test_parse_template",
+  "tests/test_madlib.py::test_read_template_raises_exception_with_bad_path",
+  "tests/test_madlib.py::test_read_template_returns_stripped_string"
+]

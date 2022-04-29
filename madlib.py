@@ -18,18 +18,31 @@ def read_template(path):
         raise FileNotFoundError
 
 
-def parse_template(template):
-    print(template)
-    expected_stripped = "It was a {} and {} {}."
-    expected_parts = ("Adjective", "Adjective", "Noun")
-    return expected_stripped, expected_parts
+def parse_template(my_str):
+    stripped = ''
+    parts = []
+    capture = False
+    current = ''
 
-	# r"(?<=\{)(.*?)(?=\})"
-	# {(.*?)}
-    # r'{[^}]*}'
+    for char in my_str:
+        if char == '{':
+            stripped += char
+            capture = True
+            current = ''
+        elif char == '}':
+            stripped += char
+            capture = False
+            parts.append(current)
+        elif capture:
+            current += char
+        else:
+            stripped += char
+
+    return stripped, tuple(parts)
 
 
-def merge():
-    # if path == "hi":
-       print('FileNotFoundError')
+def merge(string, user_input):
+    merge_output = string.format(*user_input)
+    return merge_output
+
 
